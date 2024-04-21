@@ -1,0 +1,32 @@
+﻿
+@page "/tim/tim";
+@rendermode InteractiveServer
+
+<h3>MyForm</h3>
+<EditForm Enhance Model="Person" method="post" FormName="personForm" OnSubmit="SubmitForm">
+    <div class="p-2">
+        <label>First Name</label>
+        <InputText @bind-Value="Person.FirstName"></InputText>
+    </div>
+    <div class="p-2">
+        <label>Last Name</label>
+        <InputText @bind-Value="Person.LastName">add Person</InputText>
+    </div>
+    <button class="btn btn-primary" type="submit">Add Person</button>
+</EditForm>
+<ul>
+    @foreach (var p in people)
+    {
+        <li>@p.FirstName @p.LastName</li>
+    }
+</ul>
+@code {
+    [SupplyParameterFromForm]
+    private PersonModel Person { get; set; } = new();
+    private List<PersonModel> people { get; set; } = new();
+    private void SubmitForm()
+    {
+        people.Add(Person);
+        Person = new();
+    }
+}
