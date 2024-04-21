@@ -1,0 +1,36 @@
+﻿@page "/demo";
+@rendermode InteractiveServer
+
+<h3>Demo</h3>
+@if (textInfo is not null)
+{
+    <h4>Info: @textInfo</h4>
+}
+<button class="btn btn-primary" @onclick="UpdateText">Update Text</button>
+<button class="btn btn-primary" @onclick="(()=>UpdateNumberText(1))">Update Number Text</button>
+<ul>
+    @for (var i = 0; i < 5; i++)
+    {
+        var tmp = i;
+        <li>
+        <button class="btn btn-primary" @onclick="(()=>UpdateNumberText(tmp+1))">
+            Update Number Text @(i+1) </button>
+        </li>
+    }
+</ul>
+@code {
+    private string? textInfo = null;
+    private void UpdateText()
+    {
+        textInfo = "This is new information";
+    }
+    private void UpdateNumberText(int i)
+    {
+        textInfo = GetNumberText(i);
+    }
+    private string GetNumberText(int i)
+    {
+        return $"This number {i}";
+    }
+
+}
