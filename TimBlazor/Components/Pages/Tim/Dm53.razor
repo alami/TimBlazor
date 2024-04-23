@@ -1,0 +1,25 @@
+﻿@page "/Dm53"
+@rendermode InteractiveServer
+<h3>Dm53</h3>
+
+<QuickGrid Items="people">
+    <PropertyColumn Property="@(p=>p.Id)" Sortable="true" />
+    <PropertyColumn Property="@(p=>p.FirstName)" Sortable="true" />
+    <PropertyColumn Property="@(p=>p.LastName)" Sortable="true" />
+    <PropertyColumn Property="@(p=>p.StartDate)" Sortable="true" />
+</QuickGrid>
+
+
+@code {
+    private record PersonRecord (int Id, string FirstName, string LastName, DateOnly StartDate );
+
+    private IQueryable<PersonRecord> people = new[]
+    {
+        new PersonRecord(5,"Tim","Corey", new DateOnly(2020,3,1)),
+        new PersonRecord(3,"Sue","Lokj", new DateOnly(2022,4 ,11)),
+        new PersonRecord(2,"Bob","Prima", new DateOnly(2023,3,13)),
+        new PersonRecord(1,"Kim","ALba", new DateOnly(2021,3,15)),
+        new PersonRecord(4,"Loc","Cornet", new DateOnly(2020,11,11)),
+    }.AsQueryable();
+
+}

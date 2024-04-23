@@ -1,9 +1,29 @@
 ﻿@page "/"
+<PageTitle>Content</PageTitle>
+<a href="Demo48">Demo48 </a>
+<br />
+<a href="Demo49">Demo49 </a>
+<br />
+<a href="Demo49">Demo49 </a>
+<br />
+<a href="Dm51Counter">Dm51Counter </a>
+<br />
+<a href="Tim52">Tim52EventCounter </a>
+<br />
+<a href="Dm53">Dm53 QuickGrid </a>
+<br />
 
-<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<p>--8. Razor Class Libraries</p>
+<p>-- 8. Forms </p>
+<p>-- 8. Forms </p>
+<p>-- 8. Forms </p>
+@code {
+    private int counterValue;
 
-Welcome to your new app.
+    private void UpdateCounter(int val)
+    {
+        counterValue = val;
+    }
 
-<Demo />
+}

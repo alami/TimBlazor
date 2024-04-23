@@ -1,4 +1,4 @@
-﻿@page "/counter"
+﻿@page "/Dm51Counter"
 @rendermode InteractiveServer
 @inject ILogger<Counter> log
 
@@ -13,9 +13,21 @@
 @code {
     private int currentCount = 0;
 
-    private void IncrementCount()
+    private async Task IncrementCount()
     {
         currentCount++;
+        await Task.Delay(1000);
+        currentCount++;
+        StateHasChanged();
+        await Task.Delay(1000);
+        currentCount++;
+        StateHasChanged();
+        await Task.Delay(1000);
+        currentCount++;
+        StateHasChanged();
+        await Task.Delay(1000);
+        currentCount++;
+        StateHasChanged();
     }
     protected override void OnParametersSet()
     {

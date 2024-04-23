@@ -1,0 +1,19 @@
+﻿@page "/tim52"
+@rendermode InteractiveServer
+
+<h3>Tim52</h3>
+<h2>Counter IS: @counterValue</h2>
+
+@if (counterValue < 5)
+{
+    <Dm52EventCounter OnCounterChange="UpdateCounter" />
+}
+
+@code {
+    private int counterValue;
+
+    private void UpdateCounter(int val)
+    {
+        counterValue = val;
+    }
+}
