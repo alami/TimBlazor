@@ -1,10 +1,11 @@
 ﻿@page "/start"
+@rendermode InteractiveServer
+
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
 @using BlazingPizza.Model
+@using BlazingPizza.Components.Pages.Shared
 
-
-<h3>Start</h3>
 <div class="main">
     <h1>Blazing Pizzas</h1>
     <ul class="pizza-cards">
@@ -12,7 +13,8 @@
         {
             @foreach (var special in specials)
             {
-                <li style="background-image: url('@special.ImageUrl')">
+                <li @onclick="@(() => ShowConfigurePizzaDialog(special))"
+                    style="background-image: url('@special.ImageUrl')">
                     <div class="pizza-info">
                         <span class="title">@special.Name</span>
                         @special.Description
@@ -23,12 +25,30 @@
         }
     </ul>
 </div>
+@if (showingConfigureDialog)
+{
+    <ConfigurePizzaDialog Pizza="configuringPizza" />
+}
 
 
 @code {
     List<PizzaSpecial> specials = new();
+    BlazingPizza.Model.Pizza configuringPizza;
+    bool showingConfigureDialog;
+
     protected override async Task OnInitializedAsync()
     {
         specials = await HttpClient.GetFromJsonAsync<List<PizzaSpecial>>(NavigationManager.BaseUri + "specials");
+    }
+    void ShowConfigurePizzaDialog(PizzaSpecial special)
+    {
+        configuringPizza = new BlazingPizza.Model.Pizza()
+        {
+            Special = special,
+            SpecialId = special.Id,
+            Size = BlazingPizza.Model.Pizza.DefaultSize
+        };
+
+        showingConfigureDialog = true;
     }
 }
