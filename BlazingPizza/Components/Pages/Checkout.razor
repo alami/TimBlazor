@@ -48,4 +48,15 @@
 
 @code {
     Order Order => OrderState.Order;
+    bool isSubmitting;
+
+    async Task PlaceOrder()
+    {
+        isSubmitting = true;                //disable the Place order button,
+        var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "orders", OrderState.Order);
+        var newOrderId = await response.Content.ReadFromJsonAsync<int>(); 
+                                            //post JSON that will be added to pizza.db,
+        //OrderState.ResetOrder();            //clear the order,
+        NavigationManager.NavigateTo("/");  //and use NavigationManager to redirect customers to the home page.
+    }
 }
