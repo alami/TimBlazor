@@ -1,4 +1,4 @@
-﻿@page "/start"
+﻿@page "/"
 @rendermode InteractiveServer
 
 @inject HttpClient HttpClient
@@ -8,6 +8,17 @@
 @using BlazingPizza.Model
 @using BlazingPizza.Components.Pages.Shared
 
+<div class="top-bar">
+    <a class="logo" href="">
+        <img src="img/logo.svg" />
+    </a>
+
+    <a href="" class="nav-tab active">
+        <img src="img/pizza-slice.svg" />
+        <div>Get Pizza</div>
+    </a>
+
+</div>
 
 <div class="main">
     <h1>Blazing Pizzas</h1>

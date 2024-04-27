@@ -1,0 +1,30 @@
+﻿@page "/ex0503pizzas/{pizzaname?}"
+@inject NavigationManager NavManager
+@rendermode InteractiveServer
+
+<h1>Buy a Pizza</h1>
+<div class="main">
+
+    <p>
+        I want to order a: @PizzaName
+        <a href=@HomePageURI  Match="NavLinkMatch.All">Home Page</a>
+    </p>
+    <button class="btn" @onclick="NavigateToPaymentPage">
+        Buy this pizza!
+    </button>
+
+
+</div>
+@code {
+    [Parameter]
+    public string PizzaName { get; set; }
+    public string HomePageURI { get; set; }
+    protected override void OnInitialized()
+    {
+        HomePageURI = NavManager.BaseUri;
+    }
+    private void NavigateToPaymentPage()
+    {
+        NavManager.NavigateTo("buypizza1");
+    }
+}
