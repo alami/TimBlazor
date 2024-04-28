@@ -4,9 +4,9 @@ using System.Xml.Linq;
 
 namespace BlazingPizza.Data
 {
-    public class PizzaService
+    public class PizzaService0
     {
-        public Task<Pizza[]> GetPizzasAsync()
+        public Task<Pizza0[]> GetPizzasAsync()
         {
             // Call your data access technology here
             throw new Exception();

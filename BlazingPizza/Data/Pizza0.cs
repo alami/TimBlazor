@@ -1,6 +1,6 @@
 ﻿namespace BlazingPizza.Data
 {
-    public class Pizza
+    public class Pizza0
     {
         public int PizzaId { get; set; }
 
