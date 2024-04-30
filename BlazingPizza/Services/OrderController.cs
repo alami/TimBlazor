@@ -3,9 +3,8 @@ using BlazingPizza.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazingPizza.Controllers
+namespace BlazingPizza
 {
-
     [Route("orders")]
     [ApiController]
     public class OrdersController : Controller

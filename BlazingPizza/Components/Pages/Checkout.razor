@@ -3,7 +3,6 @@
 @inject OrderState OrderState
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
-"@using BlazingPizza.Model
 
 <div class="top-bar">
     <a class="logo" href="">
@@ -62,7 +61,7 @@
         var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "orders", OrderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         //post JSON that will be added to pizza.db,
-        //OrderState.ResetOrder();            //clear the order,
-        NavigationManager.NavigateTo("/myorders");  //and use NavigationManager to redirect customers to the home page.
+        OrderState.ResetOrder();            //clear the order,
+        NavigationManager.NavigateTo($"myorders/{newOrderId}");  //and use NavigationManager to redirect customers to the home page.
     }
 }
