@@ -58,7 +58,7 @@
     async Task PlaceOrder()
     {
         isSubmitting = true;                //disable the Place order button,
-        var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "orders", OrderState.Order);
+        var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "mypost", OrderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         //post JSON that will be added to pizza.db,
         OrderState.ResetOrder();            //clear the order,
