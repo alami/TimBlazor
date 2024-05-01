@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlazingPizza.Controllers
 {
-    [Route("mypost")]
+    [Route("[controller]")]
     [ApiController]
     public class MypostController : Controller
     {
