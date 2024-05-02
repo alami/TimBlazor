@@ -3,6 +3,7 @@
 @inject OrderState OrderState
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
+@implements IDisposable
 
 <div class="top-bar">
     <a class="logo" href="">
@@ -22,7 +23,7 @@
 
 
 <div class="main">
-    <EditForm Model=Order.DeliveryAddress OnSubmit=CheckSubmission>
+    <EditForm EditContext=editContext OnValidSubmit=PlaceOrder>
         <div class="checkout-cols">
             <div class="checkout-order-details">
                 <h4>Review order</h4>
@@ -38,9 +39,10 @@
             </div>
         </div>
 
-        <button class="checkout-button btn btn-warning" disabled=@isSubmitting>
+        <button class="checkout-button btn btn-warning" type="Submit" disabled=@isError>
             Place order
         </button>
+        <DataAnnotationsValidator />
     </EditForm>
 </div>
 
@@ -48,6 +50,22 @@
     Order Order => OrderState.Order;
     bool isSubmitting;
     bool isError = false;
+    private EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new(Order.DeliveryAddress);
+        editContext.OnFieldChanged += HandleFieldChanged;
+    }
+    private void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        isError = !editContext.Validate();
+        StateHasChanged();
+    }
+    public void Dispose()
+    {
+        editContext.OnFieldChanged -= HandleFieldChanged;
+    }
 
     private async Task CheckSubmission(EditContext editContext)
     {
@@ -65,11 +83,16 @@
 
     async Task PlaceOrder()
     {
-        isSubmitting = true;                //disable the Place order button,
+        //isError = false;
+        //isSubmitting = true;                //disable the Place order button,
         var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "mypost", OrderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         //post JSON that will be added to pizza.db,
         OrderState.ResetOrder();            //clear the order,
         NavigationManager.NavigateTo($"myorders/{newOrderId}");  //and use NavigationManager to redirect customers to the home page.
+    }
+    protected void ShowError()
+    {
+        isError = true;
     }
 }
