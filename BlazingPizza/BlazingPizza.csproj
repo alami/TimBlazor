@@ -22,4 +22,8 @@
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FirstClassLibrary\FirstClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

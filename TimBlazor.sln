@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimBlazor", "TimBlazor\TimB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazingPizza", "BlazingPizza\BlazingPizza.csproj", "{FAD661EE-B361-4A2E-8833-94F772B7C574}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstClassLibrary", "FirstClassLibrary\FirstClassLibrary.csproj", "{911D55EB-FB68-41A3-B985-60BA8396E3A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FAD661EE-B361-4A2E-8833-94F772B7C574}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAD661EE-B361-4A2E-8833-94F772B7C574}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAD661EE-B361-4A2E-8833-94F772B7C574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911D55EB-FB68-41A3-B985-60BA8396E3A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911D55EB-FB68-41A3-B985-60BA8396E3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911D55EB-FB68-41A3-B985-60BA8396E3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911D55EB-FB68-41A3-B985-60BA8396E3A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
